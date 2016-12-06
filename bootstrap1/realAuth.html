@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="js/bootstrap-3.3.2-dist/css/bootstrap.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+		<link href="css/person.css" rel="stylesheet">
+		<link href="css/realAuth.css" rel="stylesheet" />
+		<script src="js/jquery/jquery-2.1.3.js"></script>
+		<script src="js/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/jquery.bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/plugins/uploadify/jquery.uploadify.min.js"></script>-->
+		<script>
+			$(function(){
+			var config = {
+					swf:"js/plugins/uploadify/uploadify.swf",//flash插件文件地址
+					uploader:"/realAuth_upload.html",//文件上传地址
+					fileObjName:"upload",//提交到服务器的名字
+					width:"100%",//宽度
+					height:"100%",//高度
+					multi:false,//是否允许选择多文件
+					overrideEvents:["onSelect"],//重写事件，相当于取消组件的默认行为。
+					fileTypeDesc:"请选择图片", //选择文件框提示信息。
+					fileTypeExts: '*.jpg;*.png;*.gif;*.bmp',//可选择文件的类型。
+					removeTimeout:0//上传成功，自动从队列中删除
+			};
+			
+			var config1 = $.extend({
+				buttonText:"上传正面",//按钮文本
+				//文件开始上传
+				onUploadStart:function(){
+					console.debug("开始上传。。。");
+				},
+				//文件上传成功
+				onUploadSuccess:function(file,data,success){
+					data = $.parseJSON(data);
+					$("#uploadImg1").attr("src",data.msg);
+					$("input[name=papersimg01]").val(data.msg);
+				},
+				onUploadError:function(){
+				}
+			},config);
+			$("#uploadBtn1").uploadify(config1);
+			
+			var config2 = $.extend({
+				buttonText:"上传反面",//按钮文本
+				//文件开始上传
+				onUploadStart:function(){
+					console.debug("开始上传。。。");
+				},
+				//文件上传成功
+				onUploadSuccess:function(file,data,success){
+					data = $.parseJSON(data);
+					$("#uploadImg2").attr("src",data.msg);
+					$("input[name=papersimg02]").val(data.msg);
+				},
+				onUploadError:function(){
+				}
+			},config);
+			$("#uploadBtn2").uploadify(config2);
+			
+		});
+		</script>
+	</head>
+	<body>
+		<div id="nav_top" class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#nav_collapse">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+     			    </button>
+				</div>
+				<div class="navbar-collapse collapse" id="nav_collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="personal.html">小强</a></li>
+						<li><a href="recharge.html">赶快充值</a></li>
+						<li><a href="###">注销</a></li>
+						<li><a href="###">帮助</a></li>
+						<li>
+							<a href="###" id="contact" title="<img src='images/contract.png' height='110' width='110'>">
+								<span>联系客服</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--头部导航一结案-->
+		<!--导航二开始-->
+		<div class="navbar navbar-default" id="el-navbar">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="###" class="navbar-brand">
+						<img src="images/logo.png" alt="Brand" />
+					</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="invest.html">我要投资</a></li>
+					<li><a href="borrow.html">我要借款</a></li>
+					<li><a href="personal.html">个人中心</a></li>
+					<li><a href="###">新手指引</a></li>
+					<li><a href="###">关于我们</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--导航二结束-->
+		<!--内容开始-->
+		<div class="container">
+			<!--导航菜单开始-->
+			<div class="row">
+				<div class="col-md-3">
+					<ul id="menu" class="list-group">
+						<li class="list-group-item"><a href="###">投资项目</a></li>
+						<li class="list-group-item">
+							<a href="###">借款项目</a>
+							<ul>
+								<li><a href="bid_request_list.html">借款项目</a></li>
+								<li><a href="borrowBidReturn_list.html">还款明细</a></li>
+							</ul>
+						</li>
+						<li class="list-group-item">
+							<a href="###">我的账户</a>
+							<ul>
+								<li><a href="personal.html">账户信息</a></li>
+								<li><a href="realAuth.html">实名认证</a></li>
+								<li><a href="###">银行卡管理</a></li>
+								<li><a href="###">登陆记录</a></li>
+							</ul>
+						</li>
+						<li class="list-group-item ">
+							<a href="###">资产详情</a>
+							<ul>
+								<li class="active"><a href="###">账户流水</a></li>
+								<li><a href="recharge_list.html">充值明细</a></li>
+								<li><a href="###">提现记录</a></li>
+								<li><a href="###">收款明细</a></li>
+							</ul>
+						</li>
+						<li class="list-group-item"><a href="userInfo.html">个人资料</a></li>
+					</ul>
+				</div>
+				<!--导航菜单结束-->
+				<!--功能页面开始-->
+				<div class="col-md-9">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							实名认证
+						</div>
+						<form class="form-horizontal" id="realAuthForm" method="post" action="realAuth_save.html" novalidate="novalidate">
+							<fieldset>
+								<div class="form-group">
+									<p class="text-center text-danger">为保护你的账户安全,实名认证成功之后不能修改信息,请认真填写!</p>
+								</div>
+								<div class="form-group">
+						        	<label class="col-md-4 control-label ">用户名</label>
+					        		<div class="col-md-8">
+						        		<p class="form-control-static">小强</p>
+						        	</div>
+						        </div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="realName">姓名</label>
+									<div class="col-md-8">
+										<input id="realName" class="form-control" name="realName"  type="text" value=""/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4  control-label" for="sex">性别</label>
+									<div class="col-md-8">
+										<select id="sex" class="form-control" name="sex" size="1">
+											<option value="0">男</option>
+											<option value="1">女</option>
+										</select>
+									</div>
+								</div>
+								 <div class="form-group">
+						        	<label class="col-sm-4  control-label" for="idtype">证件类型</label>
+					        		<div class="col-sm-8">
+						        		<select id="idType" class="form-control" name="idtype" class="select_common" size="1">
+											<option value="0">身份证</option>
+											<option value="1">驾驶证</option>
+											<option value="2">军官证</option>
+										</select>
+						        	</div>
+						        </div>
+						        <div class="form-group">
+						        	<label class="col-sm-4  control-label" for="idnumber">证件号码</label>
+					        		<div class="col-sm-8">
+						        		<input id="idNumber" class="form-control" name="idnumber"  type="text" value="">
+						        	</div>
+						        </div>
+						        <div class="form-group">
+						        	<label class="col-sm-4  control-label" for="birthdate">出生日期</label>
+					        		<div class="col-sm-8">
+						        		<input id="birthDate"  class="form-control" name="birthdate" type="text">
+						        	</div>
+						        </div>
+						        <div class="form-group">
+						        	<label class="col-sm-4  control-label" for="address">证件地址</label>
+					        		<div class="col-sm-8">
+						        		<input id="address" class="form-control" name="address"  type="text" style="max-width: 100%;width:500px;">
+						        	</div>
+						        </div>
+						        <div class="form-group">
+						        	<label class="col-md-4 control-label" for="address">身份证照片</label>
+						        	<div class="col-md-8">
+						        		<p class="text-help text-primary">请点击“选择图片”,选择证件的正反两面照片。</p>
+						        		<a href="javascript:;" id="viewExample">查看样板</a>
+						        		<div class="idCardItem">
+						        			<div>
+					        					<a href="javascript:;" id="uploadBtn1" >上传正面</a>
+					        				</div>
+					        				<img alt="" src="" class="uploadImg" id="uploadImg1" />
+					        				<input type="hidden" value="" name="papersimg01" />
+						        		</div>
+						        		<div class="idCardItem">
+					        				<div>
+					        					<a href="javascript:;" id="uploadBtn2" >上传反面</a>
+					        				</div>
+					        				<img alt="" src="" class="uploadImg" id="uploadImg2"/>
+					        				<input type="hidden" value="" name="papersimg02" />
+					        			</div>
+					        			<div class="clearfix"></div>
+						        	</div>
+						        </div>
+						        <div class="form-group">
+						        	<button type="submit" id="asubmit" class="btn btn-primary col-sm-offset-4" data-loading-text="正在提交"><i class="icon-ok"></i> 提交认证</button>
+						        </div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			<!--功能页面开始-->
+			</div>	
+		</div>
+		<!--内容结束-->
+		<!--尾部开始-->
+		<div class="container el-footer">
+			<div class="row">
+				<div class="col-md-8">
+					<p>专业Java培训、PHP培训、UI培训、iOS培训、高级Web前端培训机构</p>
+					<p>版权所有：&emsp;2006-2015成都源代码教育咨询有限公司</p>
+					<p>地&emsp;&emsp;址：&emsp;成都市高新区府城大道西段399号天府新谷1号楼620-625</p>
+					<p>电&emsp;&emsp;话：&emsp;028-86261949&nbsp; / 400-808-6840&emsp; 邮箱：&emsp;yuandaima@itsource.cn
+					</p>
+					<p>
+						<a href="###">蜀ICP备14030149号-1</a>&nbsp&nbsp&nbsp
+						<a href="###">蜀公网安备510114990541</a>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<div>
+						<p>官方微博：</p>
+						<a href="###">
+							<img src="images/tecent.png" class="Responsive image" />
+						</a>
+						<a href="###">
+							<img src="images/sina.png" class="Responsive image" />
+						</a>
+					</div>
+				</div>
+				<div class="col-md-2 p2">
+					<p>官方微信:</p>
+					<img src="images/wx.jpg" class="Responsive image" />
+				</div>
+
+			</div>
+		</div>
+		<!--尾部结束-->
+<!--//		<script src="js/jquery/jquery-2.1.3.js"></script>
+//		<script src="js/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+//		<script type="text/javascript" src="js/jquery.bootstrap.min.js"></script>
+//		<script type="text/javascript" src="js/plugins/uploadify/jquery.uploadify.min.js"></script>-->
+		<script type="text/javascript">
+			$(function(){
+				$("#viewExample").popover({
+					placement:"top",
+					html:true,
+					trigger:"hover",
+					content:"正面<img class='uploadExample' src='images/upload_source_2.jpg'><br/><br/>"
+						+"反面<img class='uploadExample' src='images/upload_source_2_1.jpg'>"
+				});
+			});
+//				$(function(){
+//					var config = {
+//						swf:"js/plugins/uploadify/uploadify.swf",//flash插件文件地址
+//						uploader:"/realAuth_upload.html",//文件上传地址
+//						fileObjName:"upload",//提交到服务器的名字
+//						width:"100%",//宽度
+//						height:"100%",//高度
+//						multi:false,//是否允许选择多文件
+//						overrideEvents:["onSelect"],//重写事件，相当于取消组件的默认行为。
+//						fileTypeDesc:"请选择图片", //选择文件框提示信息。
+//						fileTypeExts: '*.jpg;*.png;*.gif;*.bmp',//可选择文件的类型。
+//						removeTimeout:0//上传成功，自动从队列中删除
+//				};
+//				var config1 = $.extend({
+//				buttonText:"上传正面",//按钮文本
+//				//文件开始上传
+//				onUploadStart:function(){
+//					console.debug("开始上传。。。");
+//				},
+//				//文件上传成功
+//				onUploadSuccess:function(file,data,success){
+//					data = $.parseJSON(data);
+//					$("#uploadImg1").attr("src",data.msg);
+//					$("input[name=papersimg01]").val(data.msg);
+//				},
+//				onUploadError:function(){
+//				}
+//			},config);
+//			$("#uploadBtn1").uploadify(config1);
+//			
+//			var config2 = $.extend({
+//				buttonText:"上传反面",//按钮文本
+//				//文件开始上传
+//				onUploadStart:function(){
+//					console.debug("开始上传。。。");
+//				},
+//				//文件上传成功
+//				onUploadSuccess:function(file,data,success){
+//					data = $.parseJSON(data);
+//					$("#uploadImg2").attr("src",data.msg);
+//					$("input[name=papersimg02]").val(data.msg);
+//				},
+//				onUploadError:function(){
+//				}
+//			},config);
+//			$("#uploadBtn2").uploadify(config2);
+			
+		</script>
+	</body>
+</html>
